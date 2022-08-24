@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 // SETUP MONGOOSE
 const mongoose = require("mongoose");
                                // ip:address// data if you have
-mongoose.connect("mongodb://127.0.0.1:27017/basiccrud");
+mongoose.connect("mongodb://127.0.0.1:27017/services");
 mongoose.connection.once("open", () => {
    console.log("Connected to Mongo");
 })
@@ -29,37 +29,45 @@ app.get("/", (req,res) => {
    `);
 })
 
-app.get("/seed", (req, res) => {
-   const newServices = 
-   [
-      {
-         service: "hairCuts",
-         description: "men",
-         price: 20,
-         qty: 1,
+// app.get("/seed", async (req, res) => {
+//    const newServices = 
+//    [
+//       {
+//          service: "hairCuts",
+//          description: "men",
+//          price: 20,
+//          qty: 1,
 
-      },
-      {
-         service: "hairCuts",
-         description: "women",
-         price: 30,
-         qty: 1,
-      },
-      {
-         service: "hairColor",
-         description: "men",
-         price: 20,
-         qty: 1,
-      }
-]
-})
+//       },
+//       {
+//          service: "hairCuts",
+//          description: "women",
+//          price: 30,
+//          qty: 1,
+//       },
+//       {
+//          service: "hairColor",
+//          description: "men",
+//          price: 20,
+//          qty: 1,
+//       }
+//    ]
+
+//    try {
+//       const seedItems = await Service.create(newServices)
+//       res.send(seedItems)
+//    }  catch (err) {
+//       res.send(err.message)
+//    }
+// }) used once
 
 // INDEX
-app.get("/services",(req,res) => {
-   console.log("Index route working")
-   // Service.find({}, (err, services))
-   // res.render("index.ejs", {
-   //    allServices :services})
+app.get("/services", async (req,res) => {
+   console.log("Index route working before")
+   let services = await Service.find({});
+   console.log("services", services);
+   res.render("index.ejs", {allServices: services});
+   console.log("after")
 }) 
 
 // SHOW

@@ -1,9 +1,16 @@
 
-<!-- <h1>Services Index</h1>
-   <ul class="Services">
-      <% for (let i =0, allServices.length; i++){ %>
+<h1>Service Index</h1>
+   <ul class="Service">
+      <% for (let i =0; i < allServices.length; i++){ %>
          <div>
-            <h1><%= allServices[i].hairCut</h1>
+            <h2><%= allServices[i].service %></h2>
+            <h2><%= allServices[i].description %></h2>
+            <h2><%= allServices[i].price %></h2>
+            <h2><%= allServices[i].qty %></h2>
          </div>
-     }
-   </ul> -->
+      <% } %>
+   </ul>
+            
+            
+            
+       
