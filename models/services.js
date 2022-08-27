@@ -18,7 +18,7 @@ const Service = mongoose.model("Service",serviceSchema);
 module.exports = Service
 
 
-
+// MONGODB_URI=mongodb+srv://admin:aSkNil290123@atlascluster.kpjr5bk.mongodb.net/salon_services?retryWrites=true&w=majority
 
 
 

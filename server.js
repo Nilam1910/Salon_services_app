@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const Service = require("./models/services.js");
 const methodOverride = require("method-override");
+
+// const salonController = require("/.controllers/salonController.js")
 // Environment Variable
 require("dotenv").config() // you have to be obey the variable of port
 // console.log(require("dotenv").config()) //just to check
@@ -11,7 +13,7 @@ const PORT = process.env.PORT // check in bottom too
 const mongoose = require("mongoose");
 const mongoURI = process.env.MONGODB_URI
                                // ip:address// data if you have
-
+// const mongoURI = "mongodb+srv://admin:aSkNil290123@atlascluster.kpjr5bk.mongodb.net/salon_services?retryWrites=true&w=majority"
 mongoose.connect(mongoURI);
 mongoose.connection.once("open", () => {
    console.log("Connected to Mongo");
@@ -21,8 +23,8 @@ mongoose.connection.once("open", () => {
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"))
-
+app.use(methodOverride("_method"));
+// app.use("services" , salonController);
 // ROUTE MAIN
 app.get("/", (req,res) => {
    const today = new Date();
