@@ -1,0 +1,26 @@
+<%- include("./partials/header.ejs") %>
+</nav>
+   <div class="newPage">
+      <h1>Add a Service</h1>
+         <form class="new-form" action="/services" method="POST">
+            <fieldset>
+               <label for="service">Service:</label>
+               <input class="new-service" type=" text" name="services" placeholder="SERVICE-NAME" id="services">
+            </fieldset>
+            <fieldset>
+               <label for="description">Description:</label>
+               <input class="new-des" type="text" name="description" placeholder="DESCRIPTION" id="services">
+            </fieldset>
+            <fieldset>
+               <label for="price">Price: $</label>
+               <input class="new-pri" type="text" name="price" placeholder="PRICE" id="price">
+            </fieldset>
+            <fieldset>
+               <label for="qty">Quantity:</label>
+               <input class="new-qty"type="text" name="qty" placeholder="Qty" id="qty">
+            </fieldset>
+               <input class="new-cre"type="submit" value="CREATE">
+                  <button class="new-button">Add THE SERVICE</button>
+         </form>
+   </div>
+<%- include("./partials/footer.ejs") %>

@@ -1,0 +1,13 @@
+<%- include("./partials/header.ejs") %>
+   <div class="container">
+      <h1>Edit Service Page</h1>
+         <form action="/services/<%=EditService.id%>?_method=PUT" method="POST">
+               Service: <input type="text" name="service" value="<%=EditService.service%>">
+               Description: <input type="text" name="description" value="<%=EditService.description%>">
+               Price: $<input type="text" name="price" value="<%=EditService.price%>">
+               Quantity: <input type="text" name="qty" value="<%=EditService.qty%>">
+            <br>
+               <input type="submit" value="Submit-Changes">
+         </form>
+   </div>
+<%- include("./partials/footer.ejs") %>

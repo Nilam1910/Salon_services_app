@@ -1,0 +1,21 @@
+body{
+   background-color: aquamarine;
+   background-image: url(./right-side-gold.jpeg);
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+fieldset{
+   width: 25%;
+   background-color: rgb(243, 204, 131);
+}
+.new-service, .new-des, .new-pri, .new-qty, .new-cre, .new-button{
+   border: 2px solid rgb(135, 133, 133);
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-size: smaller;
+   
+}
+.new-button, .new-cre{
+   background-color: rgb(166, 103, 103);
+   
+}

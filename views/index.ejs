@@ -1,16 +1,24 @@
-
-<h1>Service Index</h1>
-   <ul class="Service">
-      <% for (let i =0; i < allServices.length; i++){ %>
-         <div>
-            <h2><%= allServices[i].service %></h2>
-            <h2><%= allServices[i].description %></h2>
-            <h2><%= allServices[i].price %></h2>
-            <h2><%= allServices[i].qty %></h2>
-         </div>
+<%- include("./partials/header.ejs") %>
+</nav>
+   <h1>Service Index</h1>
+   <ul class="Services">
+      <% for (let i =0; i < allServices.length; i++){
+         let serviceNumber = i + 1
+       %>
+           
+            <li>
+               <a href="/services/<%= allServices[i].id%>">
+                  <%= allServices[i].service %> </a>
+               <!-- DELETE FORM HERE--> 
+               <form action="/services/<%=allServices[i].id%>?_method=DELETE" method="POST">
+                  <input type="submit" value="DELETE">
+               </form>
+             
+            </li>  
+         
       <% } %>
    </ul>
             
-            
+   <%- include("./partials/footer.ejs") %>         
             
        
