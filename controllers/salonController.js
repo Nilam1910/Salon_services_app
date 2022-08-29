@@ -2,6 +2,19 @@ const express = require("express")
 const router = express.Router() // have to be capital "R"
 const Service =require("../models/services.js")
 
+// CUSTOM MIDDLEWARE TO REQUIRE AUTHENTICATION ON ROUTES
+const authRequired = (req,res, next) => {
+   if (req.session.currentUser){ // this one can exits anywhere in our     files record. this block of code in middleware so we'll have access to this object from any where and we can refer that any were in our routes,you can even use in server.js to no need to import
+    
+      // a user is signed in
+      next()
+      // next is part of express, it does what it says. i.e, go on to the next thing
+   } else{
+      // if there is no user
+      res.send("you must be logged in to do that!")
+   }
+}
+
 // app.get("/seed", async (req, res) => {
 //    const newServices = 
 //    [
@@ -75,7 +88,7 @@ router.get("/:id", async (req,res) => {
    });
 
 // EDIT 
-   router.get("/:id/edit", (req,res) =>{
+   router.get("/:id/edit", authRequired,(req,res) =>{
       Service.findById(req.params.id, (err, foundServices) =>{
          res.render("edit.ejs", {EditService: foundServices }
          );

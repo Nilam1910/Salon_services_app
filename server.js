@@ -23,7 +23,7 @@ mongoose.connect(mongoURI);
 mongoose.connection.once("open", () => {
    console.log("Connected to Mongo"); 
 }); 
-
+// rgb(243, 204, 131)
 //MIDDLEWARE
 app.use(express.static("public"));
 app.use(express.json());

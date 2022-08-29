@@ -7,7 +7,7 @@ body{
 
 fieldset{
    width: 25%;
-   background-color: rgb(243, 204, 131);
+   background-color: rgb( 214, 172, 116);
 }
 .new-service, .new-des, .new-pri, .new-qty, .new-cre, .new-button, .Reg-username, .Reg-password, .Reg-email{
    border: 2px solid rgb(135, 133, 133);

@@ -2,7 +2,8 @@ const express = require("express");
 const bcrypt = require("bcrypt")
 
 // we need our User model
-const User = require("../models/users") // you do not have to .js
+const User = require("../models/users"); // you do not have to .js
+const req = require("express/lib/request");
 
 
 const router = express.Router();
@@ -31,12 +32,49 @@ router.post("/register", (req,res) => {
          res.send("That's UserName is Taken")  // need to render back to signup page
       }  else  {
          User.create(req.body, (err, createdUser) =>{
-            console.log(createdUser)
-            res.send("user created") //need to render back to signup page
+            // console.log(createdUser)
+            // res.send("user created") //need to render back to signup page
+            req.session.currentUser = createdUser
+            res.redirect("/services")
          })
       }
    })
-
 })
 
+router.get("/signin", (req,res) => {
+   res.render("users/signin.ejs")
+})
+
+router.post("/signin", (req,res) =>{
+   User.findOne({username: req.body.username}, (err,foundUser) => {
+      if(foundUser){
+         // if they do exist, wer need to compare their passwords using bcrypt's compareSync function
+         const validLogIn = bcrypt.compareSync(req.body.password, foundUser.password)
+         // compareSync returns true if they match and false if they don't match
+         // if the password match, log then in
+         if(validLogIn){
+            req.session.currentUser = foundUser
+            // we are letting session know that we have longed in
+            // res.send("User logged in")
+            res.redirect("/services")
+         }  else{
+            // if they don't match, send a message
+            // res.send("Invalid Username or Password")
+            res.redirect("/services")
+         }
+      }  else{
+         // if they don't exist, we need to send a message
+         // res.send("Invalid Username or Password")
+         res.redirect("/services")
+      }
+   })
+})
+
+// DESTROY session route
+router.get("/signin", (req,res) =>{
+   // this destroy's the session
+   req.session.destroy(
+      res.redirect("/services")
+   )
+})
 module.exports = router
