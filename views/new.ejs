@@ -1,7 +1,7 @@
 <%- include("./partials/header.ejs") %>
 </nav>
-   <div class="newPage">
-      <h1>Add a Service</h1>
+   <div class="container">
+      <h1 class="newAdd">Add a Service</h1>
          <form class="new-form" action="/services" method="POST">
             <fieldset>
                <label for="service">Service:</label>
@@ -19,8 +19,14 @@
                <label for="qty">Quantity:</label>
                <input class="new-qty"type="text" name="qty" placeholder="Qty" id="qty">
             </fieldset>
+            <br>
+            <fieldset>
                <input class="new-cre"type="submit" value="CREATE">
-                  <button class="new-button">Add THE SERVICE</button>
+            </fieldset>
+            <!-- <fieldset>
+               <button class="new-button">Add THE SERVICE</button>
+            </fieldset> -->
+
          </form>
    </div>
 <%- include("./partials/footer.ejs") %>

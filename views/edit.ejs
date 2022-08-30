@@ -2,12 +2,22 @@
    <div class="container">
       <h1>Edit Service Page</h1>
          <form action="/services/<%=EditService.id%>?_method=PUT" method="POST">
+            <Fieldset>
                Service: <input type="text" name="service" value="<%=EditService.service%>">
+            </Fieldset>
+            <fieldset>
                Description: <input type="text" name="description" value="<%=EditService.description%>">
+            </fieldset>
+            <fieldset>
                Price: $<input type="text" name="price" value="<%=EditService.price%>">
+            </fieldset>
+            <fieldset>
                Quantity: <input type="text" name="qty" value="<%=EditService.qty%>">
+            </fieldset>
             <br>
-               <input type="submit" value="Submit-Changes">
+            <fieldset>
+               <input class="submit" type="submit" value="Submit-Changes">
+            </fieldset>
          </form>
    </div>
 <%- include("./partials/footer.ejs") %>

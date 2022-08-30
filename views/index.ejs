@@ -1,22 +1,22 @@
 <%- include("./partials/header.ejs") %>
 </nav>
-   <h1>Service Index</h1>
+   <h1 class="index">Service Index</h1>
    <ul class="Services">
-      <% for (let i =0; i < allServices.length; i++){
-         let serviceNumber = i + 1
-       %>
-           
-            <li>
-               <a href="/services/<%= allServices[i].id%>">
-                  <%= allServices[i].service %> </a>
-               <!-- DELETE FORM HERE--> 
+         <% for (let i =0; i < allServices.length; i++){
+            let serviceNumber = i + 1
+            %>
+               <fieldset>
+                  <a href="/services/<%= allServices[i].id%>">
+                     <%= allServices[i].description %> </a>
+                  </fieldset>
+               <!-- DELETE FORM HERE-->
                <form action="/services/<%=allServices[i].id%>?_method=DELETE" method="POST">
-                  <input type="submit" value="DELETE">
+                  <br>
+                  <fieldset>
+                     <input class="delete" type="submit" value="DELETE">
+                  </fieldset> 
                </form>
-             
-            </li>  
-         
-      <% } %>
+      <% } %> 
    </ul>
             
    <%- include("./partials/footer.ejs") %>         

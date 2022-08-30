@@ -2,7 +2,7 @@
    <title>User Sign In<Input:datetime></Input:datetime><input type="button" value=""></title>
 </head>
    <body>
-      <h1>Sign in </h1>
+      <h1 class="sign">Sign In </h1>
          <form class="Signin-form" action="/users/signin" method="POST">
             <fieldset>
                <label for="username">Username:</label>
@@ -16,6 +16,9 @@
                <label for="email">Email:</label>
                   <input class="Signin-email" type="text" name="email">
             </fieldset>
-                  <input class="signup" type="submit" value="Sign In">
+            <br>
+            <fieldset>
+               <input class="signup" type="submit" value="Sign In">
+            </fieldset>
          </form>
          <%- include("../partials/footer.ejs") %>

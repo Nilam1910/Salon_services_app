@@ -3,14 +3,11 @@ const bcrypt = require("bcrypt")
 
 // we need our User model
 const User = require("../models/users"); // you do not have to .js
-const req = require("express/lib/request");
-
-
 const router = express.Router();
 
-router.get("/", (req,res) => {
-   res.send("USER CONTROLLER WORKS")
-})
+// router.get("/", (req,res) => {
+//    res.send("USER CONTROLLER WORKS")
+// })
 
 router.get("/register", (req,res) => {
    res.render("users/register.ejs")
@@ -31,7 +28,7 @@ router.post("/register", (req,res) => {
       if(userExists){
          res.send("That's UserName is Taken")  // need to render back to signup page
       }  else  {
-         User.create(req.body, (err, createdUser) =>{
+         User.create(req.body, {new:true}, (err, createdUser) =>{
             // console.log(createdUser)
             // res.send("user created") //need to render back to signup page
             req.session.currentUser = createdUser
@@ -46,6 +43,7 @@ router.get("/signin", (req,res) => {
 })
 
 router.post("/signin", (req,res) =>{
+
    User.findOne({username: req.body.username}, (err,foundUser) => {
       if(foundUser){
          // if they do exist, wer need to compare their passwords using bcrypt's compareSync function
@@ -54,27 +52,28 @@ router.post("/signin", (req,res) =>{
          // if the password match, log then in
          if(validLogIn){
             req.session.currentUser = foundUser
+            console.log('validLogIn', req.session)
             // we are letting session know that we have longed in
             // res.send("User logged in")
             res.redirect("/services")
          }  else{
             // if they don't match, send a message
-            // res.send("Invalid Username or Password")
-            res.redirect("/services")
+            res.send("Invalid Username or Password")
+            // res.redirect("/user/signin")
          }
       }  else{
          // if they don't exist, we need to send a message
-         // res.send("Invalid Username or Password")
-         res.redirect("/services")
+         res.send("Invalid Username or Password")
+         // res.redirect("/user/signin")
       }
    })
 })
 
 // DESTROY session route
-router.get("/signin", (req,res) =>{
+router.get("/signout", (req, res) => {  
    // this destroy's the session
-   req.session.destroy(
+   console.log("sign-out", req.session)
+   req.session.destroy()
       res.redirect("/services")
-   )
 })
 module.exports = router
