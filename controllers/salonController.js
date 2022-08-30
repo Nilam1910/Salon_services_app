@@ -76,14 +76,15 @@ router.get("/:id", async (req,res) => {
 
    })
 
-// DELETE
+// DELETE (or DESTROY)
    router.delete("/:id", (req,res) =>{
       // res.send('deleting item') //  working
       Service.findByIdAndRemove(req.params.id, (err, data) =>{
          if(err){
             console.log(err)
+         }  else{
+            res.redirect("/services");
          }
-         res.redirect("/services");
       });
    });
 

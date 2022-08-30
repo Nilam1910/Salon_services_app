@@ -1,13 +1,9 @@
 <%- include("./partials/header.ejs") %>
 </nav>
-
-   <ul class="Services">
-         <div class="container">
-            <h1><%=singleService.service %> </h1>
-               <fieldset>
-                  <h2>Services</h2>
-                  <p><%= singleService.service %></p>
-               </fieldset>
+         <h1>Show Service Page</h1>
+            
+            <h2>Service</h2>
+               <p><%=singleService.service%></p>
             <h2>Description</h2>
                <p><%= singleService.description %></p>
             <h2>Price</h2>
@@ -15,18 +11,12 @@
             <h2>Quantity</h2>
                <p><%= singleService.qty %></p>
              <!-- <input type="button" value="Edit"/> -->
-             <fieldset>
-                <a href="/services/<%=singleService.id%>/edit"></a>
-             </fieldset>
-                     <fieldset>
-                        <button class="editButton">Edit</button>
-                     </fieldset>
-         </div>
-   </ul>
-
+            <fieldset>
+               <a href="/services/<%=singleService.id%>/edit">
+                  <button class="editButton">Edit</button></a>
+            </fieldset>
+              
       <!-- use &lt;% %&gt; for STATEMENTS
    and use &lt;%=  %&gy: for VALUES   -->
 
-    
-   
    <%- include("./partials/footer.ejs") %>

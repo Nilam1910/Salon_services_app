@@ -20,12 +20,15 @@ fieldset{
 .new-button, .new-cre, .signup, .submit, .delete, .editButton{
    background-color: rgb(173, 52, 52);
    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-   font-size: 20px;
+   font-size: 12px;
    /* width: 10px; */
 }
 .indexButton, .newButton, .showButton, .regButton, .signinButton, .signoutButton {
    margin-right: 10px;
    margin-left: 20px;
+   background-color: rgb(172, 144, 110);
+   border-radius: 1px;
+   /* text-decoration: none; not working*/
 }
 .indexButton{margin-left: 100px;}
    
@@ -42,12 +45,8 @@ fieldset{
    margin-top: 50px;
    /* margin-left: 100; */
 }
-/* placeholder{
-   
-} */
-/* .container{
-   margin-left: 100
-} */
+/* placeholder{} */
+
 .home{
    display: flex;
    flex-direction: row;

@@ -1,8 +1,8 @@
 <%- include("./partials/header.ejs") %>
    <div class="container">
       <h1>Edit Service Page</h1>
-         <form action="/services/<%=EditService.id%>?_method=PUT" method="POST">
-            <Fieldset>
+         <Fieldset>
+            <form action="/services/<%=EditService.id%>?_method=PUT" method="POST">
                Service: <input type="text" name="service" value="<%=EditService.service%>">
             </Fieldset>
             <fieldset>
