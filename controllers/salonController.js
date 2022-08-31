@@ -58,13 +58,13 @@ router.get("/:id", async (req,res) => {
 
       res.render("show.ejs",{
          singleService: foundService
-      })
-   })
-   
-})
+      });
+   }); 
+});
 
 //CREATE (POST)
    router.post("/",(req,res) => {
+      console.log("post route", req.body)
       Service.create(req.body, (error, createdService) => {
          if(error){
             console.log("error", error)
@@ -73,8 +73,7 @@ router.get("/:id", async (req,res) => {
             res.redirect("/services")
          }
       });
-
-   })
+   });
 
 // DELETE (or DESTROY)
    router.delete("/:id", (req,res) =>{

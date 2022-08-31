@@ -4,21 +4,22 @@
    <body>
       <h1 class="registerNew">Register A New User</h1>
          <form class="Reg-form" action="/users/register" method="POST">
-            <fieldset>
+            <fieldset class="reg-field">
                <label for="username">Username:</label>
                   <input class="Reg-username" type="text" name="username">
             </fieldset>
-            <fieldset>
+            <fieldset class="reg-field">
                <label for="password">Password:</label>
                   <input class="Reg-password" type="password" name="password">
             </fieldset>
-            <fieldset>
+            <fieldset class="reg-field">
                <label for="email">Email:</label>
                   <input class="Reg-email" type="text" name="email">
             </fieldset>
             <br>
-            <fieldset>
+            <fieldset class="reg-field">
                <input class="signup" type="submit" value="Sign Up">
             </fieldset>
          </form>
+         <br>
          <%- include("../partials/footer.ejs") %>

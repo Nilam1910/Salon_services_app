@@ -1,24 +1,26 @@
 <%- include("../partials/header.ejs") %>
+
    <title>User Sign In<Input:datetime></Input:datetime><input type="button" value=""></title>
 </head>
    <body>
       <h1 class="sign">Sign In </h1>
          <form class="Signin-form" action="/users/signin" method="POST">
-            <fieldset>
+            <fieldset class="sign-field">
                <label for="username">Username:</label>
                   <input class="Signin-username" type="text" name="username">
             </fieldset>
-            <fieldset>
+            <fieldset class="sign-field">
                <label for="password">Password:</label>
                   <input class="Signin-password" type="password" name="password">
             </fieldset>
-            <fieldset>
+            <fieldset class="sign-field">
                <label for="email">Email:</label>
                   <input class="Signin-email" type="text" name="email">
             </fieldset>
             <br>
-            <fieldset>
+            <fieldset class="sign-field">
                <input class="signup" type="submit" value="Sign In">
             </fieldset>
          </form>
+         <br>
          <%- include("../partials/footer.ejs") %>

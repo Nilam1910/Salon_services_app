@@ -1,21 +1,21 @@
 <%- include("./partials/header.ejs") %>
 </nav>
-         <h1>Show Service Page</h1>
-            <fieldset>
-            <h2>Service</h2>
-               <p><%=singleService.service%></p>
+         <h1 class="sp">Show Service Page</h1>
+            <fieldset class="show-field">
+               <h2 class="sh2">Service</h2>
+                  <p><%=singleService.service%></p>
             </fieldset>
-            <fieldset>
-            <h2>Description</h2>
-               <p><%= singleService.description %></p>
+            <fieldset class="show-field">
+               <h2 class="sh2">Description</h2>
+                  <p><%= singleService.description %></p>
             </fieldset>
-            <fieldset>
-            <h2>Price</h2>
-               <p>Price: $<%= singleService.price %></p>
+            <fieldset class="show-field">
+               <h2 class="sh2">Price</h2>
+                  <p>Price: $<%= singleService.price %></p>
             </fieldset>
-            <fieldset>
-            <h2>Quantity</h2>
-               <p><%= singleService.qty %></p>
+            <fieldset class="show-field">
+               <h2 class="sh2">Quantity</h2>
+                  <p><%= singleService.qty %></p>
             </fieldset>
             <br>
              <!-- <input type="button" value="Edit"/> -->
@@ -23,6 +23,7 @@
                <a href="/services/<%=singleService.id%>/edit">
                   <button class="editButton" >Edit</button></a>
             </fieldset>
+            <br>
               
       <!-- use &lt;% %&gt; for STATEMENTS
    and use &lt;%=  %&gy: for VALUES   -->
