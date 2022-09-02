@@ -11,10 +11,19 @@ require("dotenv").config(); // you have to be obey the variable of the port
 const PORT = process.env.PORT ||3000// check in bottom too
 const mongoURI = process.env.MONGODB_URI
 const SESSION_SECRET = process.env.SESSION_SECRET
+// custom middleware to make currentUser available as a local variable on all routes
+// app.use((req, res, next) => {
+//    res.locals.currentUser = req.session.currentUser
+//    next()
+//  })
 
-const salonController = require("./controllers/salonController.js");
-// goes to router "/services" plus whatever routes are inside the controller
-const userController = require("./controllers/userController.js");
+app.use(session({
+   secret: SESSION_SECRET,
+   resave: false, // https://www.npmjs.com/package/express-session#resave
+   saveUninitialized: false
+   // console.log("Here is the session secret") //worked
+   // console.log(SESSION_SECRET) //worked
+}))
 
 // SETUP MONGOOSE
 mongoose.connect(mongoURI);
@@ -27,17 +36,15 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+const salonController = require("./controllers/salonController.js");
+// goes to router "/services" plus whatever routes are inside the controller
 app.use("/services" , salonController); // its just peel route for you, means all services route goe to salonController 
+const userController = require("./controllers/userController.js");
 app.use("/users", userController);
-app.use(session({
-   secret: SESSION_SECRET,
-   resave: false, // https://www.npmjs.com/package/express-session#resave
-   saveUninitialized: false
-   // console.log("Here is the session secret") //worked
-   // console.log(SESSION_SECRET) //worked
-}))
 
-// ROUTE MAIN
+
+
+// ROUTE MAIN (DEFAULT)
 app.get("/", (req,res) => {
    // const today = new Date();
    // res.send(`
@@ -55,3 +62,12 @@ app.listen(PORT, () => {
    // console.log(`Server running on port ${PORT}`); //worked
 });
 
+
+
+// if you need this to use in header
+// <!-- <% if(req.session.currentUser){
+//    %> 
+//    <p>You are Sign-In</p>
+// <%   }else{ %>
+//      <p>You are not Sign-In</p>
+//  <% } %> -->

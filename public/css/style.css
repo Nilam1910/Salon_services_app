@@ -11,6 +11,7 @@ fieldset{
    margin-left: 70px;
 }
 .show-field, .sign-field  { padding-bottom: 1px; margin-bottom: 2px;  }
+
 .reg-field { margin-bottom: 2px; }
 
 .new-service, .new-des, .new-pri, .new-qty, .new-cre, .new-button, .Reg-username, .Reg-password, .Reg-email{

@@ -14,29 +14,36 @@ const authRequired = (req,res, next) => {
    }
 }
 
-// app.get("/seed", async (req, res) => {
+// router.get("/seed", async (req, res) => {
 //    const newServices = 
 //    [
 //       {
-//          service: "hairCuts",
+//          service: "Hair-Cuts",
 //          description: "men",
-//          price: 20,
+//          price: 25,
 //          qty: 1,
 
 //       },
 //       {
-//          service: "hairCuts",
-//          description: "women",
-//          price: 30,
+//          service: "Facial",
+//          description: "Deluxe",
+//          price: 60,
 //          qty: 1,
 //       },
 //       {
-//          service: "hairColor",
+//          service: "Hair-Color",
 //          description: "men",
 //          price: 20,
 //          qty: 1,
+//       },
+//       {
+//          service: "Eyebrows",
+//          description: "Threading",
+//          price: 10,
+//          qty: 1,
 //       }
 //    ]
+// });
 
 // INDEX
 router.get("/", async (req,res) => {
@@ -76,7 +83,7 @@ router.get("/:id", async (req,res) => {
    });
 
 // DELETE (or DESTROY)
-   router.delete("/:id", (req,res) =>{
+   router.delete( "/:id", (req,res) =>{
       // res.send('deleting item') //  working
       Service.findByIdAndRemove(req.params.id, (err, data) =>{
          if(err){
